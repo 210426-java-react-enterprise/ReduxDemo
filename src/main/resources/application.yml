@@ -1,0 +1,57 @@
+server:
+  port: 5000 # Elastic Beanstalk expects for Spring Boot Java apps to be deployed on port 5000...
+
+spring:
+  application:
+    name: spring-boot-poc
+  h2:
+    console:
+      enabled:
+      path: /h2
+  datasource:
+    driver-class-name: org.h2.Driver
+    password: password
+    url: "to enter"
+    username: revature
+
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQL95Dialect
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        generate_statistics: true
+        format_sql: true
+
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: AlphaCastInfo@gmail.com
+    password: Rev@ture
+    protocol: smtp
+    tls: true
+    properties.mail.smtp:
+      auth: true
+      starttls.enable: true
+      ssl.trust: smtp.gmail.com
+
+  data:
+    jpa:
+      repositories:
+        bootstrap-mode: default
+
+logging:
+  level:
+    org:
+      hibernate: INFO
+      SQL: DEBUG
+      cache: DEBUG
+      stat: DEBUG
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
