@@ -1,0 +1,29 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      java: corretto8
+  pre_build:
+    commands:
+      - echo Nothing to do in the pre_build phase...
+  build:
+    commands:
+      - echo Build started on `date`
+      - mvn package -DskipTests
+  post_build:
+    commands:
+      - echo Build completed on `date`
+#      - ls -a
+#      - unzip target/alpha-api-0.1.war
+#      - ls -a
+      - mv target/alpha-api-0.1.jar alpha-api-0.1.jar
+#      - ls -a
+#      - mv target/META-INF META-INF
+#      - ls -a
+artifacts:
+  files:
+    - alpha-api-0.1.jar
+#    - WEB-INF/**/*
+#    - META-INF/**/*
+  name: artifact
